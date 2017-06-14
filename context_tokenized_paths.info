@@ -1,0 +1,6 @@
+name = "Context Condition: Tokenized Paths"
+dependencies[] = "context"
+description = "Overrides the default Context path condition to use tokens."
+package = "Context"
+core = "7.x"
+files[] = includes/context_tokenized_paths.class.inc

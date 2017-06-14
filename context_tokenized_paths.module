@@ -1,0 +1,28 @@
+<?php
+/**
+ * Implements hook_context_plugins().
+ *
+ */
+function context_tokenized_paths_context_plugins() {
+  $plugins = array();
+  $plugins['context_tokenized_paths'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_tokenized_paths'),
+      'file' => 'context_tokenized_paths.class.inc',
+      'class' => 'context_tokenized_paths',
+      'parent' => 'context_condition_path',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry_alter
+ * @param $registry
+ *   The registry, passed by reference.
+ */
+function context_tokenized_paths_context_registry_alter(&$registry) {
+  if (isset($registry['conditions']['path'])) {
+    $registry['conditions']['path']['plugin'] = 'context_tokenized_paths';
+  }
+}
